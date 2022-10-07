@@ -1,0 +1,64 @@
+Basic cmd:
+------------
+/* to intialize the git repository */
+$ git init
+
+// to copy the code in to local env
+$ git clone <repository-url>
+
+// it will shows the unstaged files which are not commit yet
+$ git status 
+
+//once you made the changes to the files to move the files to staging area we can use "GIT ADD" and then modified changes will moved to staging area 
+$ git add file-name (BmiMain.java)
+
+//to commit the modified files to local repository 
+$ git commit -m "commit message"
+
+// to check the commits history
+$ git log 
+
+// we can push the changes from local repository to remote repository
+$ git push origin branch-name(main)
+
+// to get the latest changes from remote repository
+$ git pull <repository-url> 
+
+
+Branching :
+------------
+
+//to create new branch
+$ git branch branch-name(dev)
+
+There are two ways to change the branch :
+------------------------------------------
+1 . // switching from one branch to another branch
+    $ git switch destination-branch name
+
+
+2.  $ git checkout destination-branch name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
