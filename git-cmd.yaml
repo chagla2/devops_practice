@@ -44,7 +44,7 @@ $ git push origin branch-name(main)
 
 Stashing :
 
-stashing means let say the developer make changes in branch 1 and he/she wanted to hold the changes and switched to branch 2 due have emergency requirement they should commit the changes in branch2 
+stashing means let say the developer make changes in branch 1 and he/she wanted to hold the changes and switched to branch 2 due have emergency requirement they should switch the branch and commit the changes in branch2 
 in this particular scenario the developer now stash the changes in branch1 by executing  "git stash" now he /she can switch to branch2 to commit the changes then again switch back to branch 1 the commit the 
 stash changes in branch. see the stash changes using "git stash pop"
 
