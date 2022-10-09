@@ -25,7 +25,7 @@ $ git push origin branch-name(main)
 $ git pull <repository-url> 
 
 
-Branching :
+how to create a Branch :
 ------------
 
 //to create new branch
@@ -33,11 +33,31 @@ $ git branch branch-name(dev)
 
 There are two ways to change the branch :
 ------------------------------------------
-1 . // switching from one branch to another branch
+    1 . // switching from one branch to another branch
     $ git switch destination-branch name
 
 
-2.  $ git checkout destination-branch name
+    2.  $ git checkout destination-branchname
+    
+// we can push the changes from local repository to remote repository
+$ git push origin branch-name(main)
+
+Stashing :
+
+stashing means let say the developer make changes in branch 1 and he/she wanted to hold the changes and switched to branch 2 due have emergency requirement they should commit the changes in branch2 
+in this particular scenario the developer now stash the changes in branch1 by executing  "git stash" now he /she can switch to branch2 to commit the changes then again switch back to branch 1 the commit the 
+stash changes in branch. see the stash changes using "git stash pop"
+
+$ git stash or git stash -u
+
+//check stash changes.
+$ git stash pop.
+
+
+
+
+
+
 
 
 
