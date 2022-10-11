@@ -1,1 +1,27 @@
 
+K8S-dashboard set up:
+
+// we can install k8s dashboard by running kubectl apply cmd
+$ sudo kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml
+
+// to verify all installed resources  
+$ sudo kubectl get all -n kubernetes-dashboard
+
+//to see the each pod
+$sudo kubectl get pods --all-namespaces
+
+// to get the list of  services  
+$ sudo kubectl get svc
+
+//edit the service from ClusterIp to NodePort /Load Balancer
+$ sudo kubectl edit svc -n kubernetes-dashboard
+
+// create a service account to authenticate any process or an application inside the container.
+$ sudo kubectl create serviceaccount dashboard -n kubernetes-dashboard
+
+//get the service token by executing cmd
+$ sudo kubectl -n kubernetes-dashboard create token kubernetes-dashboard
+
+// to get full access for entair cluster then create cluster role binding rule.
+$  sudo kubectl create clusterrolebinding dashboard-admin -n kubernetes-dashboard 
+        --clusterrole=kubernetes-dashboard(name) --serviceaccount=kubernetes-dashboard(name):dashboard
