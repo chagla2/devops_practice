@@ -1,1 +1,18 @@
+//to check the version of docker
+$ docker version
+
+//to check the list of docker containers
+$ docker ps
+
+// to check the docker images
+$ docker images
+
+
+
+//to remove docker images forcefully 
+$ docker rmi -f docker-image id
+
+//to remove the docker continer
+$ docker rm container_id
+
 
