@@ -7,7 +7,10 @@ $ docker ps
 // to check the docker images
 $ docker images
 
+$ docker run -it -d <docker-image name>
 
+//to get in to container
+$ docker exec -it <container id> /bin/bash or sh
 
 //to remove docker images forcefully 
 $ docker rmi -f docker-image id
