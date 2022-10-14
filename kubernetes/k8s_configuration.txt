@@ -30,12 +30,12 @@ $ sudo chown $(id -u):$(id -g) $HOME/.kube/config
      Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
        https://kubernetes.io/docs/concepts/cluster-administration/addons/
      You can now join any number of the control-plane node running the following command on each as root:
-         kubeadm join api-104vm.k8s.ma.cait.org:6443 --token hzoriq.ty48k26f58fshwdv --discovery-token-ca-cert-hash       sha256:badb8bf5a0b0c9a9f990cf8e0967c80fc876c771df3ed394930ac1d74c4b76c5 --control-plane --certificate-key     50347790a954c8f14db70baa28c90c89bfcbcec4aa15e7526e134f047612d350
+         kubeadm join <api-url>:6443 --token hzoriq.ty48k26f58fshwdv --discovery-token-ca-cert-hash       sha256:badb8bf5a0b0c9a9f990cf8e0967c80fc876c771df3ed394930ac1d74c4b76c5 --control-plane --certificate-key     50347790a954c8f14db70baa28c90c89bfcbcec4aa15e7526e134f047612d350
      Please note that the certificate-key gives access to cluster sensitive data, keep it secret!
      As a safeguard, uploaded-certs will be deleted in two hours; If necessary, you can use
      "kubeadm init phase upload-certs --upload-certs" to reload certs afterward.
      Then you can join any number of worker nodes by running the following on each as root:
-     kubeadm join api-104vm.k8s.ma.cait.org:6443 --token hzoriq.ty48k26f58fshwdv --discovery-token-ca-cert-hash sha256:badb8bf5a0b0c9a9f990cf8e0967c80fc876c771df3ed394930ac1d74c4b76c5 "
+     kubeadm join <api-url>:6443 --token hzoriq.ty48k26f58fshwdv --discovery-token-ca-cert-hash sha256:badb8bf5a0b0c9a9f990cf8e0967c80fc876c771df3ed394930ac1d74c4b76c5 "
      
      
 $ kubectl get nodes
