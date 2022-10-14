@@ -1,1 +1,124 @@
 
+kubernetes configuration:
+ 
+ssh root@hostname/ip address
+
+VIP Configuration:
+$ export VIP=<IP ADDRESS>
+//before that execite ip addr 
+$ export INTERFACE=ens3
+$ yum install jq
+$ KVVERSION=$(curl -sL https://api.github.com/repos/kube-vip/kube-vip/releases | jq -r ".[0].name") 
+$ alias kube-vip="ctr image pull ghcr.io/kube-vip/kube-vip:$KVVERSION; ctr run --rm --net-host ghcr.io/kube-vip/kube-vip:$KVVERSION vip /kube-vip"
+# assign VIP temporarly to INTERFACE
+$ ip add add $VIP/24 dev $INTERFACE
+
+# initialize control plane
+$ kubeadm init --control-plane-endpoint "<API- URL>:6443" --upload-certs --pod-network-cidr=172.24.0.0/13
+
+$ mkdir -p $HOME/.kube
+$ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+$ sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+  " To start using your cluster, you need to run the following as a regular user:
+       mkdir -p $HOME/.kube
+       sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+      sudo chown $(id -u):$(id -g) $HOME/.kube/config
+     Alternatively, if you are the root user, you can run:
+       export KUBECONFIG=/etc/kubernetes/admin.conf
+     You should now deploy a pod network to the cluster.
+     Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+       https://kubernetes.io/docs/concepts/cluster-administration/addons/
+     You can now join any number of the control-plane node running the following command on each as root:
+         kubeadm join api-104vm.k8s.ma.cait.org:6443 --token hzoriq.ty48k26f58fshwdv --discovery-token-ca-cert-hash       sha256:badb8bf5a0b0c9a9f990cf8e0967c80fc876c771df3ed394930ac1d74c4b76c5 --control-plane --certificate-key     50347790a954c8f14db70baa28c90c89bfcbcec4aa15e7526e134f047612d350
+     Please note that the certificate-key gives access to cluster sensitive data, keep it secret!
+     As a safeguard, uploaded-certs will be deleted in two hours; If necessary, you can use
+     "kubeadm init phase upload-certs --upload-certs" to reload certs afterward.
+     Then you can join any number of worker nodes by running the following on each as root:
+     kubeadm join api-104vm.k8s.ma.cait.org:6443 --token hzoriq.ty48k26f58fshwdv --discovery-token-ca-cert-hash sha256:badb8bf5a0b0c9a9f990cf8e0967c80fc876c771df3ed394930ac1d74c4b76c5 "
+     
+     
+$ kubectl get nodes
+
+$ kubectl apply -f https://kube-vip.io/manifests/rbac.yaml
+$ kube-vip manifest daemonset --interface $INTERFACE --address $VIP --inCluster --taint --controlplane --arp --leaderElection > kube-vip.yaml
+$ kubectl apply -f kube-vip.yaml
+$ ip addr del $VIP/24 dev ens3
+
+# Make sure /usr/local/bin is in the path
+$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+$ chmod 700 get_helm.sh 
+$ ./get_helm.sh
+
+$ rm -f get_helm.sh
+$ source <(helm completion bash)
+$ helm completion bash > /etc/bash_completion.d/helm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
