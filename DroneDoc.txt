@@ -1,0 +1,55 @@
+Firstly create the GIT Auth application in git hub account.
+
+//create Rpc_Secret code
+-->openssl rand -hex 16
+
+//pull the drone images
+-> docker pull drone/drone:2
+
+// now execute the drone env variables.
+docker run \
+--volume=/var/lib/drone:/data \
+--env=DRONE_GITHUB_CLIENT_ID=cef2dcea830d2a79c991 \
+--env=DRONE_GITHUB_CLIENT_SECRET=3a201633796e729f9751598578c79747185900cc \
+--env=DRONE_GITHUB_SERVER=https://github.com \
+--env=DRONE_RPC_SECRET=c6e0fcd2fdf0166681d6eec494eafbfa \
+--env=DRONE_SERVER_HOST=192.168.122.76:8080 \
+--env=DRONE_SERVER_PROTO=http \
+--env=DRONE_USER_CREATE=username:chagantila2,admin:true \
+--publish=8080:80 \
+ --publish=8443:443 \
+--restart=always \
+--detach=true \
+--name=drone-applic\
+  drone/drone:2
+  
+  
+  Now Configure Drone-Runner :
+  
+  //pull the runner image
+  docker pull drone/drone-runner-docker:1
+  
+  //execute the runner env variables
+  
+  docker run -detach \
+  --volume=/var/run/docker.sock:/var/run/docker.sock \
+  --env=DRONE_RPC_PROTO=http \
+  --env=DRONE_RPC_HOST=192.168.122.76:8080 \
+  --env=DRONE_RPC_SECRET=c6e0fcd2fdf0166681d6eec494eafbfa \
+  --env=DRONE_RUNNER_NAME=drone-runn-app \
+  --publish=3001:3001 \
+  --restart=always \
+  --name=drone-runn-app \
+  drone/drone-runner-docker:1
+  
+  //
+  docker images
+  docker ps
+  //check the logs whether the server is connected properly
+  
+  docker logs (dockercontainer-id)
+  
+
+
+  
+
