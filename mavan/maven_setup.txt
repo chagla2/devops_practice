@@ -1,0 +1,40 @@
+How to setup maven on Mac:
+
+-> Download maven binary zip file from https://maven.apache.org/download.cgi .
+-> copy and paste maven folder to any other working directory 
+-> open terminal and type mvn -version
+
+      if mvn not installed in your machine it will return => zsh: command not found: mvn
+
+-> now configure bash_profile / zshrc file
+
+    bash_profile Configuration :
+    ------------------------------
+      -> $ open ~/.bash_profile
+      -> Add java and maven file path over there.
+      
+            ->  export JAVA_HOME=$(/usr/libexec/java_home)
+                export M2_HOME=/Users/sagarsowji/tools/apache-maven-3.8.6
+                export PATH=$PATH:$M2_HOME/bin
+       -> save and close the file.
+       -> now run exec bash -l
+       
+     Another Approch is ZSHRC Configuration in mac os:
+     -------------------------------------------------
+      
+       -> $ vi ~/.zshrc
+       -> copy and paste java and maven path
+       
+              ->export JAVA_HOME=$(/usr/libexec/java_home)
+                export M2_HOME=/Users/sagarsowji/tools/apache-maven-3.8.6
+                export PATH=$PATH:$M2_HOME/bin
+                
+        -> save and close the file
+        -> now run exec zsh -l
+       -> after that type mvn -version now you can see the maven version details.
+    
+    
+    
+    
+    
+    
