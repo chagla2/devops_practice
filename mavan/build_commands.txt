@@ -1,0 +1,7 @@
+How to run and build spring boot microservices applications.
+
+mvn clean install
+
+
+
+
