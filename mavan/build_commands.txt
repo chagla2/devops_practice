@@ -2,6 +2,11 @@ How to run and build spring boot microservices applications.
 
 mvn clean install
 
+Skip Test:
+
+mvn install -DskipTests
+
+
 
 
 
